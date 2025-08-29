@@ -9,6 +9,6 @@ namespace domain.Interfaces
 {
     public interface IOrderDomain
     {
-        Task<List<OrderDomain>> GetOrders(int customerId);
+        Task<List<OrderDomain>> GetOrders(int customerId, int page, int rows);
     }
 }

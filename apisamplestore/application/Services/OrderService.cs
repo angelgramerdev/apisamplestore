@@ -19,13 +19,13 @@ namespace application.Services
             _order = order;
         }   
 
-        public async Task<ResponseDomain> GetOrders(int customerId)
+        public async Task<ResponseDomain> GetOrders(int customerId,int page,int rows)
         {
             ResponseDomain response = null;
             try
             {
                 response = GetResponse("OK",true);
-                var orders =await _order.GetOrders(customerId);  
+                var orders =await _order.GetOrders(customerId, page, rows);  
                 response.orders = orders;   
                 
             }

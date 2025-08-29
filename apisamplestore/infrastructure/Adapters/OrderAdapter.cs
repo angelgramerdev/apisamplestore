@@ -20,12 +20,12 @@ namespace infrastructure.Adapters
             _context = context;
         }
 
-        public async Task<List<OrderDomain>> GetOrders(int customerId)
+        public async Task<List<OrderDomain>> GetOrders(int customerId, int page, int rows)
         {
             List<OrderDomain> _orders = new List<OrderDomain>();
             try
             {
-                var orders =await _context.Orders.Where(o=> o.custid==customerId).ToListAsync();
+                var orders =await _context.Orders.Where(o=> o.custid==customerId).Skip(page-1).Take(rows).ToListAsync();
                 orders.ForEach(o => {
                     _orders.Add(new OrderDomain{ 
                          OrderId=o.orderid,

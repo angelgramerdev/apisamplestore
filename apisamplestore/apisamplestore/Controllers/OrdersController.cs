@@ -18,11 +18,11 @@ namespace apisamplestore.Controllers
 
         [HttpGet]
         [Route("GetOrders")]
-        public async Task<IActionResult> GetOrders(int customerId) 
+        public async Task<IActionResult> GetOrders(int customerId, int page, int rows) 
         {
             try
             {
-                var res=await _order.GetOrders(customerId);  
+                var res=await _order.GetOrders(customerId,page,rows);  
                 return Ok(res);
             }
             catch(Exception e) 
