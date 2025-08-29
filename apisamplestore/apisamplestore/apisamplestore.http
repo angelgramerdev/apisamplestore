@@ -1,0 +1,6 @@
+@apisamplestore_HostAddress = http://localhost:5157
+
+GET {{apisamplestore_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
