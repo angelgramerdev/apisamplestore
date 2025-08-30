@@ -10,5 +10,6 @@ namespace domain.Interfaces
     public interface IOrderDomain
     {
         Task<List<OrderDomain>> GetOrders(int customerId, int page, int rows);
+        Task<int> SaveOrderDetail(OrderDetailsDomain orderDetail);
     }
 }

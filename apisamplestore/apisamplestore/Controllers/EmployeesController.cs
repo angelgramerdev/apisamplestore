@@ -21,7 +21,7 @@ namespace apisamplestore.Controllers
             try
             {
                 var res= await _employee.GetEmployees();
-                return Ok(res);
+                return Ok(res.employees);
             }
             catch (Exception ex) 
             { 

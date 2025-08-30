@@ -26,6 +26,12 @@ builder.Services.AddScoped<ICustomer, CustomerService>();
 builder.Services.AddScoped<ICustomerDomain, CustomerAdapter>();
 builder.Services.AddScoped<IOrder, OrderService>();
 builder.Services.AddScoped<IOrderDomain, OrderAdapter>();
+builder.Services.AddScoped<IShipperDomain, ShipperAdapter>();
+builder.Services.AddScoped<IShipper, ShipperService>();
+builder.Services.AddScoped<IEmployeeDomain, EmployeeAdapter>();
+builder.Services.AddScoped<IEmployee, EmployeeService>();
+builder.Services.AddScoped<IProductDomain, ProductAdapter>();
+builder.Services.AddScoped<IProduct, ProductService>();
 
 var app = builder.Build();
 

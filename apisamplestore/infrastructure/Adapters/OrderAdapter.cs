@@ -46,5 +46,20 @@ namespace infrastructure.Adapters
             }
             return _orders;
         }
+
+        public async Task<int> SaveOrderDetail(OrderDetailsDomain orderDetail)
+        {
+            int result = 0;
+            try
+            {
+                result = await _context.Database.ExecuteSqlInterpolatedAsync($"EXEC new_order @customerid={orderDetail.CustomerId},@employeeid={orderDetail.EmployeeId},@shipperid={orderDetail.ShiperId},@shipname={orderDetail.ShipName},@shipaddress={orderDetail.ShipAddress},@shipcity={orderDetail.ShipCity},@orderdate={orderDetail.OrderDate},@requireddate={orderDetail.RequiredDate},@shippeddate={orderDetail.ShippedDate},@freight={orderDetail.Freight},@shipcountry={orderDetail.ShipCountry},@productid={orderDetail.ProductId},@unitprice={orderDetail.UnitPrice},@qty={orderDetail.Qty},@discount={orderDetail.Discount}");
+            }
+            catch (Exception e)
+            {
+                e.Message.ToString();
+            }
+
+            return result;
+        }
     }
 }

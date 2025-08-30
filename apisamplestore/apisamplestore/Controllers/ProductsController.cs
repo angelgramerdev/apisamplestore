@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace apisamplestore.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public class ProductsController : ControllerBase
     {

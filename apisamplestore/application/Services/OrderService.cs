@@ -51,5 +51,19 @@ namespace application.Services
             response.Message = message;
             return response;
         }
+
+        public async Task<int> SaveOrderDetails(OrderDetailsDomain orderDetail)
+        {
+            var result = 0;
+            try
+            {
+                result =await _order.SaveOrderDetail(orderDetail);
+            }
+            catch (Exception e)
+            {
+                e.Message.ToString();
+            }
+            return result;
+        }
     }
 }

@@ -247,9 +247,11 @@ public partial class StoreSampleContext : DbContext
             entity.Property(e => e.postalcode).HasMaxLength(10);
             entity.Property(e => e.region).HasMaxLength(15);
         });
+        
 
         OnModelCreatingPartial(modelBuilder);
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+   
 }

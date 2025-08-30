@@ -26,8 +26,9 @@ namespace application.Services
             try
             {
                 var products=await _product.GetProducts();
-                response.products=products; 
                 response = GetResponse("OK", true);
+                response.products=products; 
+              
                 return response;    
             }
             catch (Exception e)

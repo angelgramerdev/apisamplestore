@@ -1,4 +1,5 @@
 ﻿using application.Interfaces;
+using domain.Entities;
 using domain.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +29,21 @@ namespace apisamplestore.Controllers
             catch(Exception e) 
             {
                 return BadRequest();   
+            }
+        }
+
+        [HttpPost]
+        [Route("SaveOrderDetails")]
+        public async Task<IActionResult> SaveOrderDetails(OrderDetailsDomain orderDetails) 
+        {
+            try
+            {
+                var res =await _order.SaveOrderDetails(orderDetails);
+                return Ok(res);
+            }
+            catch (Exception e)
+            { 
+            return BadRequest();
             }
         }
     }
