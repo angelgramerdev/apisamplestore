@@ -10,31 +10,30 @@ using System.Threading.Tasks;
 
 namespace application.Services
 {
-    public class OrderService : IOrder
+    public class ProductService : IProduct
     {
-        
-        private readonly IOrderDomain _order;
-        public OrderService(IOrderDomain order) 
-        { 
-            _order = order;
-        }   
+        private readonly IProductDomain _product;
 
-        public async Task<ResponseDomain> GetOrders(int customerId,int page,int rows)
+        public ProductService(IProductDomain product)
+        { 
+            _product = product;
+        }
+        
+        public async Task<ResponseDomain> GetProducts()
         {
             ResponseDomain response = null;
+            
             try
             {
-                response = GetResponse("OK",true);
-                var orders =await _order.GetOrders(customerId, page, rows);  
-                response.orders = orders;   
-                
+                var products=await _product.GetProducts();
+                response.products=products; 
+                response = GetResponse("OK", true);
+                return response;    
             }
             catch (Exception e)
             {
-                e.Message.ToString();
+                return GetResponse("BadRequest",false);
             }
-
-            return response;
         }
 
         public ResponseDomain GetResponse(string message, bool isGood)

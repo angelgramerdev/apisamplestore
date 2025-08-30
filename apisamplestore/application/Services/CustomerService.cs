@@ -19,6 +19,23 @@ namespace application.Services
             _customerDomain = customerDomain;
         }
 
+        public async Task<ResponseDomain> GetCustomerByName(string name)
+        {
+            ResponseDomain response = null;
+            try
+            {
+                List<CustomerDomain> customers=await _customerDomain.GetCustomerByName(name);
+                response = GetResponse("OK", true);
+                response.customers = customers;
+                response.customers.ForEach(f => f.PredictedDate=f.PredictedDate.AddDays(f.DiffDays));
+            }
+            catch(Exception e) 
+            {
+                e.Message.ToString();
+            }
+            return response;
+        }
+
         public async Task<ResponseDomain> GetCustomers(int pages, int rows) 
         {
             ResponseDomain response = null;
@@ -45,6 +62,7 @@ namespace application.Services
             {
                 response.Status = HttpStatusCode.OK;
                 response.Message = message; 
+                return response;    
             }
 
             response.Status = HttpStatusCode.BadRequest;

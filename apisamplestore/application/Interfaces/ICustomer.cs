@@ -11,5 +11,6 @@ namespace application.Interfaces
     public interface ICustomer
     {
         Task<ResponseDomain> GetCustomers(int pages, int rows);
+        Task<ResponseDomain> GetCustomerByName(string name);
     }
 }

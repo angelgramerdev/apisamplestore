@@ -10,26 +10,25 @@ using System.Threading.Tasks;
 
 namespace application.Services
 {
-    public class OrderService : IOrder
+    public class ShipperService : IShipper
     {
-        
-        private readonly IOrderDomain _order;
-        public OrderService(IOrderDomain order) 
-        { 
-            _order = order;
-        }   
+       private readonly IShipperDomain _shipper;
 
-        public async Task<ResponseDomain> GetOrders(int customerId,int page,int rows)
+        public ShipperService(IShipperDomain shipper) 
+        { 
+            _shipper = shipper;
+        }
+
+        public async Task<ResponseDomain> GetShippers()
         {
             ResponseDomain response = null;
             try
             {
-                response = GetResponse("OK",true);
-                var orders =await _order.GetOrders(customerId, page, rows);  
-                response.orders = orders;   
-                
+                var shippers= await _shipper.GetShippers();
+                response = GetResponse("Ok", true);
+                response.shippers = shippers;   
             }
-            catch (Exception e)
+            catch (Exception e) 
             {
                 e.Message.ToString();
             }

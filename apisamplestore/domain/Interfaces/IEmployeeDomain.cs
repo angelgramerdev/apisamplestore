@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace domain.Interfaces
 {
-    public interface ICustomerDomain
+    public interface IEmployeeDomain
     {
-        Task<List<CustomerDomain>> GetCustomers(int pages, int rows);
-        Task<List<CustomerDomain>> GetCustomerByName(string name);
+        Task<List<EmployeeDomain>> GetEmployees();
     }
 }

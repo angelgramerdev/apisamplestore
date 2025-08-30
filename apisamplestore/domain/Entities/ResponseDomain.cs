@@ -13,6 +13,10 @@ namespace domain.Entities
         public HttpStatusCode Status { get; set; }
         public List<CustomerDomain> customers { get; set; }
         public List<OrderDomain> orders { get; set; }
+        public List<EmployeeDomain> employees { get; set; }
+        public List<ProductDomain> products { get; set; }
+
+        public List<ShipperDomain> shippers { get; set; }
 
     
     }

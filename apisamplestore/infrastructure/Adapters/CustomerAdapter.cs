@@ -39,5 +39,20 @@ namespace infrastructure.Adapters
             
             return _customers;                       
         }
+
+        public async Task<List<CustomerDomain>> GetCustomerByName(string name)
+        {
+            List<CustomerDomain> _customers = null;
+            try
+            {
+              _customers =await _context.Database.SqlQuery<CustomerDomain>($"EXEC getcustomerbyname {name}").ToListAsync();
+            }
+            catch (Exception e)
+            {
+                e.Message.ToString();
+            }
+
+            return _customers;
+        }
     }
 }

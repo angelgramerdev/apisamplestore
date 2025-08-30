@@ -30,5 +30,20 @@ namespace apisamplestore.Controllers
                 return BadRequest(ex.Message);  
             }
         }
+
+        [HttpGet]
+        [Route("GetCustomerByName")]
+        public async Task<IActionResult> GetCustomerByName(string name) 
+        {
+            try
+            {
+                var res=await _customerService.GetCustomerByName(name);
+                return Ok(res); 
+            }
+            catch (Exception e) 
+            {
+                return BadRequest();
+            }
+        }
     }
 }

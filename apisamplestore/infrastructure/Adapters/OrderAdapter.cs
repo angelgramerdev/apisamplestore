@@ -32,6 +32,7 @@ namespace infrastructure.Adapters
                          RequiredDate=o.requireddate,
                          ShipName=o.shipname,
                          ShipCity=o.shipcity,
+                         ShippedDate=o.shippeddate,
                          ShipAddress=o.shipaddress
                     });
                 });
