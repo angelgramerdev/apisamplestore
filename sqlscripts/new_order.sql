@@ -1,3 +1,4 @@
+/****** Object:  StoredProcedure [dbo].[new_order]    Script Date: 30/08/2025 9:05:19 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7,7 +8,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE new_order 
+ALTER PROCEDURE [dbo].[new_order] 
 	-- fields orders
 
 @customerid int,
@@ -36,9 +37,9 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-BEGIN TRY
+--BEGIN TRY
 
-BEGIN TRANSACTION
+--BEGIN TRANSACTION
 
 INSERT INTO Sales.Orders (
 	custid,
@@ -61,21 +62,20 @@ PRINT 'Inserted ID: ' + CAST(@orderid AS VARCHAR);
 
 INSERT INTO Sales.OrderDetails (orderid,productid,unitprice,qty,discount) values(@orderid, @productid, @unitprice,@qty,@discount)
 
-COMMIT
+--COMMIT
     PRINT 'Result: ' 
-END TRY
-BEGIN CATCH
+--END TRY
+--BEGIN CATCH
 
-ROLLBACK
+--ROLLBACK
     -- Error handling code
-    PRINT 'An error occurred:';
-    PRINT ERROR_MESSAGE();   -- Shows the error message
-    PRINT 'Error Number: ' + CAST(ERROR_NUMBER() AS VARCHAR);
-    PRINT 'Severity: ' + CAST(ERROR_SEVERITY() AS VARCHAR);
-    PRINT 'State: ' + CAST(ERROR_STATE() AS VARCHAR);
-    PRINT 'Procedure: ' + ISNULL(ERROR_PROCEDURE(), 'N/A');
-    PRINT 'Line: ' + CAST(ERROR_LINE() AS VARCHAR);
-END CATCH;
+    --PRINT 'An error occurred:';
+    --PRINT ERROR_MESSAGE();   -- Shows the error message
+    --PRINT 'Error Number: ' + CAST(ERROR_NUMBER() AS VARCHAR);
+    --PRINT 'Severity: ' + CAST(ERROR_SEVERITY() AS VARCHAR);
+    --PRINT 'State: ' + CAST(ERROR_STATE() AS VARCHAR);
+    --PRINT 'Procedure: ' + ISNULL(ERROR_PROCEDURE(), 'N/A');
+    --PRINT 'Line: ' + CAST(ERROR_LINE() AS VARCHAR);
+--END CATCH;
 
 END
-GO
